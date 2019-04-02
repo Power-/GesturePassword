@@ -1,0 +1,23 @@
+body {
+  background-color: #fff;
+  -webkit-text-size-adjust: 100% !important;
+}
+.flex-content .success-img {
+  display: block;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin: 2.58666667rem auto 0.42666667rem;
+}
+.flex-content .success-title {
+  height: 0.45333333rem;
+  line-height: 0.45333333rem;
+  font-size: 0.45333333rem;
+  color: #4e545a;
+  text-align: center;
+}
+.flex-content .long-btn-common {
+  margin-top: 3.12rem;
+  border: 1px solid #4a90e2;
+  color: #4a90e2;
+  background-color: #fff;
+}

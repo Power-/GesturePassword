@@ -1,0 +1,134 @@
+.flex-content .header-explain {
+  padding-top: 0.5rem;
+}
+.flex-content .header-explain .head-title {
+  display: inline-block;
+  /* height: 1.33333333rem;
+  line-height: 1.33333333rem; */
+  padding: 0 0.66666667rem 0.26666667rem;
+  color: #b8bed7;
+  font-size: 0.37333333rem;
+}
+.flex-content .input-box {
+  padding: 0 0.53333333rem;
+  margin-bottom: 0.24rem;
+  background-color: #fff;
+  font-size: 0.4rem;
+  color: #4e545a;
+  position: absolute;
+  width: 100%;
+  max-width: 10rem;
+}
+.flex-content .input-box li {
+  height: 1.46666667rem;
+  line-height: 1.46666667rem;
+  border-bottom: 1px solid #ebebeb;
+}
+.flex-content .input-box li:last-child {
+  border: none;
+}
+.flex-content .input-box li .input-box-content {
+  width: 100%;
+  height: 1.46666667rem;
+  line-height: 1.46666667rem;
+}
+.flex-content .input-box li .input-box-content select {
+  height: 1rem;
+  line-height: 1rem;
+  font-size: 0.4rem;
+  color: #9ea0a4;
+}
+.flex-content .input-box li .input-box-content .unselected {
+  width: 70%;
+  height: 1.46666667rem;
+  padding-left: 0.15rem;
+  line-height: 1.46666667rem;
+  color: #d8dbe7;
+  font-size: 0.4rem;
+}
+.flex-content .input-box li .input-box-content input {
+  padding-left: 0.15rem;
+  height: 1rem;
+  line-height: 1.06666667rem;
+  font-size: 0.4rem;
+  color: #4e545a;
+}
+.flex-content .input-box li .input-box-content input.verifyCode {
+  border-bottom: none;
+  width: 4rem;
+}
+.flex-content .input-box li .input-box-content .verifyBtn {
+  display: inline-block;
+  height: 0.72rem;
+  padding-left: 0.22666667rem;
+  margin-top: 4%;
+  line-height: 0.72rem;
+  text-align: right;
+  vertical-align: middle;
+  border-left: 1px solid #ebebeb;
+}
+.flex-content .long-btn-common {
+  margin-top: 7.82666667rem;
+}
+input::-webkit-input-placeholder {
+  color: #d8dbe7;
+}
+input::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #d8dbe7;
+}
+input:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #d8dbe7;
+}
+input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #d8dbe7;
+}
+.flex-content .info-box li .input-box-content {
+  margin-top: -0.32rem;
+  width: 70.666%;
+  height: 1.226666667rem;
+  line-height: 1.226666667rem;
+  border-bottom: 1px solid #eee;
+}
+.flex-content .info-box li .input-box-content input {
+  padding-left: 0.15rem;
+  height: 1rem;
+  line-height: 1.06666667rem;
+  font-size: 0.4rem;
+  color: #394259;
+}
+.flex-content .long-btn-common {
+  /* width: 86.6%;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  font-size: 0.45333333rem; */
+  margin-top: 7.82666667rem;
+  width: 8rem;
+  height: 1.1733333333rem;
+  line-height: 1.2266666667rem;
+  color: #8da0b5;
+  font-size: 0.453333333rem;
+  background: #d7e5f5;
+  border: none;
+  -webkit-border-radius: 0.0666666666667rem;
+  -moz-border-radius: 0.0666666666667rem;
+  border-radius: 0.0666666666667rem;
+  clear: both;
+}
+.hidden {
+  display: none;
+}
+.pass {
+  background: #418de6 !important;
+  color: #fff !important;
+}
+/* 倒计时按钮颜色 */
+.btn-downTime {
+  color: #d3d3d3;
+}
+/* 正常按钮颜色 */
+.btn-getCode {
+  color: #1661ab;
+}

@@ -1,0 +1,517 @@
+.main-color {
+  color: #418de6;
+}
+.bg-main-color {
+  background-color: #418de6;
+}
+/*从bootstrap中移植属性*/
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+:after,
+:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  font-size: 0;
+  height: 0;
+}
+
+.navbar-fixed-bottom {
+  bottom: 0;
+  margin-bottom: 0;
+  border-width: 1px 0 0;
+}
+
+.navbar-fixed-bottom,
+.navbar-fixed-top {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+p {
+  margin: 0 0 10px;
+}
+img {
+  vertical-align: middle;
+}
+
+body,
+p,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+img,
+input,
+textarea {
+  border: 0;
+}
+input {
+  border-radius: 0;
+  outline: none;
+  width: 100%;
+}
+a {
+  text-decoration: none;
+  color: #8c8c8c;
+}
+body {
+  font: 14px/1.5 "Microsoft YaHei", Helvetica, Arial, sans-serif;
+  color: #8c8c8c;
+  background: #f5f5f9;
+  max-width: 750px;
+  overflow-x: hidden;
+  margin: 0 auto;
+  min-width: 320px;
+  -webkit-text-size-adjust: 100% !important;
+}
+[data-dpr="2"] body {
+  max-width: 750px;
+}
+[data-dpr="3"] body {
+  max-width: 1250px;
+}
+
+body.new {
+  font: 14px/1.5 "Microsoft YaHei", Helvetica, Arial, sans-serif;
+  color: #8c8c8c;
+  background: #efefef;
+}
+.position {
+  position: relative;
+  top: 0;
+}
+.container {
+  padding: 0;
+}
+.row {
+  margin: 0;
+}
+.lf {
+  float: left;
+}
+.rg {
+  float: right;
+}
+.text-align-lf {
+  text-align: left;
+}
+.text-align-rg {
+  text-align: right;
+}
+.text-align-ct {
+  text-align: center;
+}
+
+.error-info {
+  position: absolute;
+  margin: auto auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  z-index: 99;
+  width: 40%;
+  height: 100px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #fff;
+  background: #4c4c4c;
+  opacity: 0.9;
+  filter: alpha(opacity: 90);
+  border-radius: 10px;
+  display: none;
+}
+.error-info div {
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+}
+
+/* 按钮 距离顶部距离 */
+.login-sign-btn {
+  margin-bottom: 10px;
+  height: 35px;
+}
+
+/* 按钮 */
+.btn-common {
+  margin-top: 20px;
+  width: 100%;
+  line-height: 35px;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 18px;
+}
+.btn-big {
+  display: block;
+  width: 8.93333333rem;
+  height: 1.18666667rem;
+  line-height: 1.18666667rem;
+  border-radius: 8px;
+  font-size: 0.48rem;
+  text-align: center;
+}
+.btn-normal {
+  color: #f44336;
+  background: #e7eaf1;
+  border: 1px solid #f44336;
+}
+.btn-press {
+  color: #fff;
+  background: #f44336;
+  border: 1px solid #f44336;
+}
+.btn-disabled {
+  color: #fabab5;
+  background: #e7eaf1;
+  border: 1px solid #fabab5;
+}
+/* 验证码 */
+.yzm {
+  position: absolute;
+  top: 13px;
+  right: 20px;
+  width: 20%;
+  height: 26px;
+  line-height: 25px;
+  font-size: 12px;
+  border-radius: 16px;
+}
+.yzm-normal {
+  color: #fff;
+  background: #f44336;
+  border: 1px solid #f44336;
+}
+.yzm-press {
+  color: #fff;
+  background: #d32f2f;
+  border: 1px solid #d32f2f;
+}
+.yzm-disabled {
+  color: #fabab5;
+  background: #fff;
+  border: 1px solid #fabab5;
+}
+/*暂无数据*/
+.nodata {
+  margin: auto auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 40%;
+  z-index: 0;
+  font-size: 16px;
+  text-align: center;
+  display: none;
+}
+.col {
+  padding-left: 0;
+  padding-right: 0;
+}
+.clear {
+  clear: both;
+}
+.margin {
+  margin: 0 15px;
+}
+/*  遮罩  */
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.6;
+  filter: alpha(opacity: 60);
+  z-index: 100000;
+}
+/*  成功弹出框   */
+.succeed-info {
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  z-index: 99;
+  width: 40%;
+  height: 110px;
+  text-align: center;
+  font-size: 15px;
+  color: #fff;
+  background: #4c4c4c;
+  opacity: 0.9;
+  filter: alpha(opacity: 90);
+  border-radius: 10px;
+  display: none;
+}
+.succeed-info img {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  height: 40px;
+}
+.succeed-info div {
+  line-height: 20px;
+}
+/*  失败页面 */
+.flase-box {
+  height: 250px;
+  color: #adadad;
+  background: #fff;
+}
+a.back-index {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  color: #f44336;
+  font-size: 12px;
+}
+.false-img {
+  margin: 40px 0 10px;
+  width: 80px;
+  height: 80px;
+}
+.false-txt {
+  line-height: 30px;
+  font-size: 20px;
+  color: #000;
+}
+/* 按钮 */
+.btn-common {
+  margin-top: 20px;
+  width: 100%;
+  line-height: 35px;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 18px;
+}
+.btn-normal {
+  color: #f44336;
+  background: #e7eaf1;
+  border: 1px solid #f44336;
+}
+.btn-press {
+  color: #fff;
+  background: #f44336;
+  border: 1px solid #f44336;
+}
+.btn-disabled {
+  color: #fabab5;
+  background: #e7eaf1;
+  border: 1px solid #fabab5;
+}
+/* header */
+
+.title-box .signup {
+  color: #fff;
+  font-size: 16px;
+  line-height: 40px;
+}
+.bing-info {
+  position: absolute;
+  margin: auto auto;
+  left: 0;
+  right: 0;
+  top: 40%;
+  z-index: 9999999;
+  width: 70%;
+  text-align: center;
+  background: #fff;
+  border-radius: 10px;
+  color: #171717;
+  opacity: 0.9;
+  filter: alpha(opacity: 90);
+  display: none;
+}
+.bing-tishi {
+  margin-top: 10px;
+}
+.bing-info p {
+  margin: 10px auto;
+  width: 70%;
+  font-size: 12px;
+}
+.tishi-p {
+  font-size: 12px;
+  line-height: 34px;
+}
+.tishi-mima {
+  margin: 10px auto;
+  width: 90%;
+  height: 30px;
+}
+/*  弹出交易密码  */
+input.mima-inp {
+  padding: 0;
+  margin: -2px;
+  width: 15%;
+  height: 95%;
+  border-right: 0;
+  border-left: 1px solid #e8eaf0;
+  border-top: 1px solid #d9dce4;
+  border-bottom: 1px solid #d9dce4;
+  font-size: 14px;
+  text-align: center;
+}
+.cancel {
+  position: absolute;
+  left: 10px;
+  top: 2px;
+  height: 15px;
+}
+.bind-btn {
+  border-top: 1px solid #a0a0a0;
+}
+.bind-btn span {
+  float: left;
+  width: 50%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+.bind-btn span.true {
+  width: 100%;
+  font-size: 15px;
+  line-height: 28px;
+  color: #007aff;
+}
+.shouye1 {
+  color: #f44336;
+}
+/*  眼睛  */
+.login-eye {
+  text-align: center;
+  height: 52px;
+  line-height: 50px;
+  background: #fff;
+}
+.login-eye input {
+  margin: 16px 0;
+  width: 26px;
+  height: 20px;
+}
+.load {
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  margin-top: 10px;
+  text-align: center;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.form-bottom {
+  height: 50px;
+}
+a.block {
+  display: block;
+}
+a.block:hover {
+  text-decoration: none;
+}
+.back-btns {
+  width: 16px;
+  height: 16px;
+  border-left: 2px solid #fff;
+  border-top: 2px solid #fff;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  margin: 0 auto;
+  margin-top: 17px;
+}
+/* 全局联系方式样式 */
+a.contact-tel {
+  color: #f44336;
+}
+a.contact-tel:hover {
+  color: #f44336;
+}
+a:hover,
+a:visited,
+a:active {
+  text-decoration: none;
+}
+dt {
+  font-weight: normal;
+}
+.hide {
+  display: none !important;
+}
+.show {
+  display: block !important;
+}
+
+/*  新增公共样式  */
+.long-btn-common {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  height: 1.17333333rem;
+  line-height: 1.17333333rem;
+  font-size: 0.45333333rem;
+  color: #fff;
+  text-align: center;
+  background-color: #418de6;
+  -webkit-border-radius: 0.05333333rem;
+  -moz-bordefr-radius: 0.05333333rem;
+  border-radius: 0.05333333rem;
+  cursor: pointer;
+}
+.long-grey-btn-common {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  height: 1.17333333rem;
+  line-height: 1.17333333rem;
+  font-size: 0.45333333rem;
+  text-align: center;
+  -webkit-border-radius: 0.05333333rem;
+  -moz-border-radius: 0.05333333rem;
+  border-radius: 0.05333333rem;
+  cursor: pointer;
+  color: #8da0b5;
+  background-color: #d7e5f5;
+}
+.padding-top {
+  padding-top: 0.26666667rem;
+}
+.brown {
+  color: #ad8242;
+}
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}

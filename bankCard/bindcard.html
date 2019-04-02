@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="renderer" content="webkit" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>三方支付验证</title>
+
+    <link href="./css/base.css" rel="stylesheet" />
+    <link href="./libs/need/layer.css" rel="stylesheet" />
+    <link href="./css/bindCard.css" rel="stylesheet" />
+    <script src="./libs/lib.flexible3.js"></script>
+    <script src="./libs/layer.js"></script>
+    <script src="./libs/jquery-1.11.1.min.js"></script>
+
+    <script src="./libs/vue.min.js"></script>
+  </head>
+
+  <body>
+    <div class="flex-content" id="app">
+      <div class="header-explain">
+        <span class="head-title">
+          根据银保监会的最新要求，现在需要您更新系统内的预留信息。
+        </span>
+        <span class="head-title">
+          如未完成更新，可能会造成您的贷款逾期。并纳入中国人民银行征信系统，对您后续的征信产生不良影响！
+        </span>
+      </div>
+
+      <ul v-show="!ifShowVerify" class="input-box">
+        <li class="clearfix">
+          <div class="input-box-content rg">
+            <input
+              type="text"
+              v-model="bankUserName"
+              placeholder="请输入您的真实姓名"
+              />
+          </div>
+        </li>
+        <li class="clearfix">
+          <div class="input-box-content rg">
+            <input
+              type="text"
+              v-model="bankUserID"
+              placeholder="请输入您的身份证号"
+              maxlength="18"
+              />
+          </div>
+        </li>
+        <li class="clearfix">
+          <div class="input-box-content rg">
+            <input
+              type="tel"
+              v-model="bankCard"
+              placeholder="请输入您的银行卡号"
+              />
+          </div>
+        </li>
+        <li class="clearfix">
+          <div class="input-box-content rg">
+            <input
+              type="tel"
+              v-model="phone"
+              placeholder="请输入银行预留手机号"
+              maxlength="11"
+              />
+          </div>
+        </li>
+      </ul>
+      <ul v-show="ifShowVerify" class="input-box">
+        <li class="clearfix">
+          <div class="input-box-content rg clearfix">
+            <input
+              class="verifyCode"
+              type="tel"
+              v-model="verifyCode"
+              placeholder="请输入短信验证码"
+              maxlength="6"
+              />
+            <div class="verifyBtn rg btn-downTime" v-if="isSendBtn">{{ downTime
+              }}</div>
+            <div
+              class="verifyBtn rg btn-getCode"
+              v-else
+              @click="sendMsgCode">
+              {{ btnText }}
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div
+        v-show="!ifShowVerify"
+        class="long-btn-common"
+        @click="submitUserInfo"
+        v-bind:class="bankUserID!=''&&bankUserName!=''&&bankCard!=''&phone!=''?'pass':''">
+        提交
+      </div>
+      <div
+        v-show="ifShowVerify"
+        class="long-btn-common"
+        @click="submitVarifyCode"
+        v-bind:class="verifyCode!=''?'pass':''">
+        提交
+      </div>
+    </div>
+
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          canClick: true, //防止重复点击
+          ifShowVerify: false, //是否显示验证码界面
+          isSendBtn: false, // 是否已发送短信
+          btnText: "获取验证码", // 按钮文案
+          downTime: "120s后重新发送",
+          bankUserName: "", //真实姓名
+          bankUserID: "", //身份证号
+          bankCard: "", //银行卡号
+          phone: "", //手机号
+          verifyCode: "", //验证码
+          uniqueCode: "" //预绑定唯一标示
+        },
+        methods: {
+          submitUserInfo: function(username, userid, bankid, bankphone) {
+            var that = this;
+            if (that.canClick) {
+              that.canClick = false;
+              if (
+                !that.bankUserName == "" &&
+                !that.bankUserID == "" &&
+                !that.bankCard == "" &&
+                !that.phone == ""
+              ) {
+                that.getUniqueCode();
+              }
+            }
+          },
+          getUniqueCode: function() {
+            var that = this;
+            $.ajax({
+              url: "/baofu/card/bind-card",
+              type: "post",
+              dataType: "json",
+              data: {
+                bankNumber: that.bankCard,
+                accountName: that.bankUserName,
+                idNo: that.bankUserID,
+                phone: that.phone
+              },
+              success: function (res) {
+                that.canClick = true;
+                if (res.code === 200 && res.data.uniqueCode != '') {
+                  if(that.ifShowVerify){
+                    that.uniqueCode = res.data.uniqueCode;
+                    that.isSendBtn = true;
+                    that.time();
+                  }else{
+                    that.uniqueCode = res.data.uniqueCode;
+                    that.ifShowVerify = !that.ifShowVerify;
+                  }
+                } else {
+                  layer.open({
+                    content: res.msg
+                    , skin: 'msg'
+                    , time: 2 //2秒后自动关闭
+                  })
+                }
+              },
+              error: function (jqXHR, textStatus, errorThrown) {
+                /*错误信息处理*/
+                that.canClick = true;
+              }
+            });
+          },
+          submitVarifyCode: function(varifyCode) {
+            var that = this;
+            if(that.canClick){
+              that.canClick = false;
+              if (that.verifyCode != "") {
+                $.ajax({
+                  url: "/baofu/card/confirm-bind-card",
+                  type: "post",
+                  dataType: "json",
+                  data: {
+                    uniqueCode: that.uniqueCode,
+                    sms: that.verifyCode
+                  },
+                  success: function (res) {
+                    that.canClick = true;
+                    if (res.code === 200) {
+                      location.href = "success.html";
+                    }else{
+                      layer.open({
+                        content: res.msg
+                        , skin: 'msg'
+                        , time: 2 //2秒后自动关闭
+                      })
+                    }
+                  },
+                  error: function (jqXHR, textStatus, errorThrown) {
+                    /*错误信息处理*/
+                    that.canClick = true;
+                  }
+                });
+              }
+            }
+          },
+          sendMsgCode() {
+            // 获取短信验证码
+            var that = this;
+            that.getUniqueCode();
+          },
+          time: function() {
+            // 倒计时
+            var that = this;
+            var t = 120,
+              objTime;
+            objTime = setInterval(function() {
+              t--;
+              if (t < 0) {
+                // 关闭定时器
+                clearInterval(objTime);
+                t = 120;
+                that.btnText = "获取验证码";
+                that.isSendBtn = false;
+                return false;
+              }
+              that.downTime = t + "s后重新发送";
+            }, 1000);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
